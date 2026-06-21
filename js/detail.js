@@ -2,7 +2,7 @@ const container = document.getElementById("detail-produk");
 
 // Format harga: tampilkan USD utama dan IDR sebagai perkiraan kecil
 function formatIDR(harga) {
-  const idkRate = 15000; // 1 USD = 15,000 IDR (dipakai hanya untuk perkiraan)
+  const idkRate = 15000; // 1 USD = 15,000 IDR
   const rupiah = harga * idkRate;
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -10,15 +10,6 @@ function formatIDR(harga) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(rupiah);
-}
-
-function formatUSD(harga) {
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2
-  }).format(harga);
 }
 
 // Ambil ID dari URL
@@ -62,10 +53,7 @@ async function ambilDetailProduk(id) {
 
             <div class="mb-6">
               <div class="text-4xl font-bold text-green-500">
-                ${formatUSD(produk.price)}
-              </div>
-              <div class="text-sm text-gray-500">
-                ≈ ${formatIDR(produk.price)}
+                ${formatIDR(produk.price)}
               </div>
             </div>
 
