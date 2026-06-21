@@ -16,6 +16,12 @@ function formatRupiah(harga) {
 const urlParams = new URLSearchParams(window.location.search);
 const produkId = urlParams.get("id");
 
+if (!produkId) {
+  container.innerHTML = `<p class="text-red-500">ID produk tidak ditemukan. Silakan buka halaman detail dari daftar produk.</p>`;
+} else {
+  ambilDetailProduk(produkId);
+}
+
 async function ambilDetailProduk(id) {
   try {
     const res = await fetch(`https://fakestoreapi.com/products/${id}`);
@@ -25,20 +31,19 @@ async function ambilDetailProduk(id) {
     const produk = await res.json();
 
     container.innerHTML = `
-    <div class="p-2 mr-10 ">
-    <div class="max-w-6xl max-auto bg-white rounded-lg shadow-lg overflow-hidden">
-      <div class="bg-gray-100 rounded-2xl flex items-center justify-center  ">
-    
-      <img
-      src="${produk.image}"
-      alt="${produk.title}"
-      class= " bg-gray-200 rounded-lg overflow-hidden w-full h-70 object-contain hover:scale-105 transition duration-300 ml-10"
-     >
-     
+    <div class="max-w-6xl mx-auto p-4">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="flex flex-col lg:flex-row gap-8 bg-gray-100 p-6">
+          <div class="flex-1 flex items-center justify-center">
+            <img
+              src="${produk.image}"
+              alt="${produk.title}"
+              class="w-full max-w-sm h-auto object-contain rounded-lg hover:scale-105 transition duration-300"
+            >
+          </div>
 
-      <div class="flex flex-col justify-center px-9">
-            
-            <span class="bg-gray-300 text-gray-600 text-sm px-4 py-1 rounded-full w-fit mb-4 capitalize">
+          <div class="flex-1 flex flex-col justify-center gap-6">
+            <span class="bg-gray-300 text-gray-600 text-sm px-4 py-1 rounded-full w-fit mb-2 capitalize">
               ${produk.category}
             </span>
 
@@ -50,23 +55,23 @@ async function ambilDetailProduk(id) {
               ${formatRupiah(produk.price)}
             </div>
 
-          <p class="text-gray-600 leading-relaxed mb-8">
+            <p class="text-gray-600 leading-relaxed mb-6">
               ${produk.description}
             </p>
-            <div class="flex gap-2">
-            <button type="button" onclick="tambahKeKeranjang(${produk.id})" class="bg-blue-600 text-white px-3 py-2 rounded-xl font-semibold transition inline-block text-center">
-              Tambah ke Keranjang
-            </button>
 
-            <button type="button" onclick="tambahKeKeranjang(${produk.id})" class="bg-blue-600 text-white px-3 py-2 rounded-xl font-semibold transition inline-block text-center">
-              Beli Sekarang
-            </button>
-
-            </div>
+            <div class="flex flex-col sm:flex-row gap-3">
+              <button type="button" onclick="tambahKeKeranjang(${produk.id})" class="bg-blue-600 text-white px-4 py-3 rounded-xl font-semibold transition">
+                Tambah ke Keranjang
+              </button>
+              <button type="button" onclick="tambahKeKeranjang(${produk.id})" class="bg-blue-600 text-white px-4 py-3 rounded-xl font-semibold transition">
+                Beli Sekarang
+              </button>
             </div>
           </div>
         </div>
-      `;
+      </div>
+    </div>
+`;
 
   } catch (error) {
     container.innerHTML =` <p>Gagal memuat detail produk.</p>`;
@@ -124,4 +129,4 @@ window.tambahKeKeranjang = function(id) {
   window.location.href = "./Keranjang.html";
 };
 
-ambilDetailProduk(produkId);
+// ambilDetailProduk sudah dipanggil di atas ketika `produkId` ada
