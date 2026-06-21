@@ -39,19 +39,19 @@
 
   <!-- Mobile Menu -->
   <div id="mobile-menu" class="hidden bg-gray-800 md:hidden px-6 py-4 flex flex-col gap-4">
+
     <a href="index.html" class="text-white hover:text-yellow-400 transition-colors">Home</a>
-    <a href="#" class="text-white hover:text-yellow-400 transition-colors">Kategori</a>
+    <a href="#produk" class="text-white hover:text-yellow-400 transition-colors">Produk</a>
     <a href="contact.html" class="text-white hover:text-yellow-400 transition-colors">Contact</a>
     <button onclick="logoutMobile()" class="text-left text-red-400 hover:text-red-300 transition-colors">Logout</button>
   </div>
 
   <script>
     document.getElementById("hamburger").addEventListener("click", () => {
-      const menu = document.getElementById("mobile-menu");
-      menu.classList.toggle("hidden");
-      menu.classList.toggle("flex");
+      document.getElementById("mobile-menu").classList.toggle("hidden");
     });
   </script>
+
 
   <!-- Breadcrumb -->
   <div class="px-8 py-4 text-sm text-gray-500">
