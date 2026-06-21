@@ -1,6 +1,6 @@
-// Format harga ke Rupiah
-function formatRupiah(harga) {
-  const idkRate = 15000; // 1 USD = 15,000 IDR
+// Format harga: tampilkan USD utama dan IDR sebagai perkiraan kecil
+function formatIDR(harga) {
+  const idkRate = 15000; // 1 USD = 15,000 IDR (dipakai hanya untuk perkiraan)
   const rupiah = harga * idkRate;
   return new Intl.NumberFormat('id-ID', {
     style: 'currency',
@@ -8,6 +8,15 @@ function formatRupiah(harga) {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0
   }).format(rupiah);
+}
+
+function formatUSD(harga) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }).format(harga);
 }
 
 const api = "https://fakestoreapi.com/products";
@@ -27,7 +36,7 @@ fetch(api)
           <img src="${element.image}" alt="Gambar Produk" class="w-32 h-32 object-contain mx-auto mb-4">
           <span class="bg-gray-300 text-gray-900 text-xs font-semibold px-2.5 py-1 rounded-full w-fit mb-4 capitalize">${element.category}</span>
           <h2 class="text-sm font-semibold mb-2 line-clamp-2 flex-1">${element.title}</h2>
-          <p class="text-green-500 font-bold mt-2 mb-3">${formatRupiah(element.price)}</p>
+          <p class="text-green-500 font-bold mt-2 mb-3">${formatUSD(element.price)} <span class="text-xs text-gray-500">≈ ${formatIDR(element.price)}</span></p>
           <div class="flex gap-2 mt-auto">
             <a href="Detail.html?id=${element.id}" class="flex-1 text-center border border-gray-300 hover:border-blue-400 hover:text-blue-500 text-gray-600 text-xs font-semibold px-3 py-2 rounded-lg transition-colors">
               Lihat Detail
