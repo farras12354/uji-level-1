@@ -95,7 +95,7 @@ function renderList() {
       <div class="flex items-start gap-4">
         <input type="checkbox" id="check-${p.id}" onchange="hitungTotal()" checked
           class="w-4 h-4 accent-orange-500 cursor-pointer mt-1 shrink-0">
-        <img src="${p.image}" alt="${p.title}" class="w-20 h-20 object-contain rounded-lg shrink-0">
+        <img src="${p.image}" alt="${p.title}" class="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-lg shrink-0">
         <div class="flex-1 min-w-0">
           <p class="text-sm font-semibold text-gray-800 line-clamp-1">${p.title}</p>
           <p class="text-xs text-gray-400 mt-0.5 capitalize">${p.category}</p>
