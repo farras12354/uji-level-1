@@ -90,25 +90,28 @@ function renderList() {
 
   Object.values(produkData).forEach((p) => {
     const card = document.createElement("div");
-    card.className = "bg-white rounded-xl shadow p-4 flex items-center gap-4";
+    card.className = "bg-white rounded-xl shadow p-4 flex flex-col gap-4 sm:flex-row sm:items-center";
     card.innerHTML = `
-      <input type="checkbox" id="check-${p.id}" onchange="hitungTotal()" checked
-        class="w-4 h-4 accent-orange-500 cursor-pointer shrink-0">
-      <img src="${p.image}" alt="${p.title}" class="w-20 h-20 object-contain rounded-lg shrink-0">
+      <div class="flex items-start gap-3">
+        <input type="checkbox" id="check-${p.id}" onchange="hitungTotal()" checked
+          class="w-4 h-4 accent-orange-500 cursor-pointer mt-1 shrink-0">
+        <img src="${p.image}" alt="${p.title}" class="w-24 h-24 object-contain rounded-lg shrink-0">
+      </div>
       <div class="flex-1 min-w-0">
-        <p class="text-sm font-semibold text-gray-800 line-clamp-1">${p.title}</p>
-        <p class="text-xs text-gray-400 mt-0.5 capitalize">${p.category}</p>
+        <p class="text-sm font-semibold text-gray-800 line-clamp-2">${p.title}</p>
+        <p class="text-xs text-gray-400 mt-1 capitalize">${p.category}</p>
+        <div class="mt-4 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <button onclick="kurang(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">−</button>
+            <span id="qty-${p.id}" class="w-8 text-center text-sm font-medium">${qty[p.id]}</span>
+            <button onclick="tambah(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">+</button>
+          </div>
+          <button onclick="hapus(${p.id})" class="text-gray-500 hover:text-red-500 transition-colors text-sm font-semibold">Hapus</button>
+        </div>
       </div>
-      <div class="flex items-center gap-3 shrink-0">
-        <button onclick="kurang(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">−</button>
-        <span id="qty-${p.id}" class="w-4 text-center text-sm font-medium">${qty[p.id]}</span>
-        <button onclick="tambah(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">+</button>
+      <div class="flex items-center justify-between gap-3 sm:flex-col sm:items-end">
+        <span id="harga-${p.id}" class="text-green-500 font-bold text-sm">${formatRupiah(p.price * qty[p.id])}</span>
       </div>
-      <span id="harga-${p.id}" class="text-green-500 font-bold text-sm w-20 text-right shrink-0">${formatRupiah(p.price * qty[p.id])}</span>
-      <button onclick="hapus(${p.id})" class="text-gray-300 hover:text-red-400 transition-colors shrink-0 w-8 h-8 rounded-full border-2 border-gray">
-       X
-      </button>
-     
     `;
     listEl.appendChild(card);
   });
