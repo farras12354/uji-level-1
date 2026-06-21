@@ -90,7 +90,7 @@ function renderList() {
 
   Object.values(produkData).forEach((p) => {
     const card = document.createElement("div");
-    card.className = "bg-white rounded-xl shadow p-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between";
+    card.className = "bg-white rounded-xl shadow p-4 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between";
     card.innerHTML = `
       <div class="flex items-start gap-4">
         <input type="checkbox" id="check-${p.id}" onchange="hitungTotal()" checked
@@ -101,14 +101,16 @@ function renderList() {
           <p class="text-xs text-gray-400 mt-0.5 capitalize">${p.category}</p>
         </div>
       </div>
-      <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3 md:gap-4">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 lg:gap-4 w-full lg:w-auto">
         <div class="flex items-center gap-3">
           <button onclick="kurang(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">−</button>
           <span id="qty-${p.id}" class="w-8 text-center text-sm font-medium">${qty[p.id]}</span>
           <button onclick="tambah(${p.id})" class="w-8 h-8 rounded-full border border-gray-300 hover:border-orange-400 text-gray-600 hover:text-orange-500 flex items-center justify-center text-lg transition-colors">+</button>
         </div>
-        <span id="harga-${p.id}" class="text-green-500 font-bold text-sm md:text-right">${formatRupiah(p.price * qty[p.id])}</span>
-        <button onclick="hapus(${p.id})" class="text-gray-300 hover:text-red-400 transition-colors text-sm font-semibold">X</button>
+        <div class="flex items-center gap-3 justify-between sm:justify-end w-full sm:w-auto">
+          <span id="harga-${p.id}" class="text-green-500 font-bold text-sm">${formatRupiah(p.price * qty[p.id])}</span>
+          <button onclick="hapus(${p.id})" class="text-gray-300 hover:text-red-400 transition-colors text-sm font-semibold">X</button>
+        </div>
       </div>
     `;
     listEl.appendChild(card);
