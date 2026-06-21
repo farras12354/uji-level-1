@@ -1,0 +1,17 @@
+{
+  "name": "new-folder-(13)",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tailwindcss -i src/input.css -o src/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "flowbite": "^4.0.2",
+    "tailwindcss": "^4.3.0"
+  }
+}

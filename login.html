@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login ShopEase</title>
+  <link href="./src/output.css" rel="stylesheet">
+</head>
+
+<body class="min-h-screen bg-slate-50 flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white rounded-3xl p-8 shadow-xl border border-slate-200">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-blue-600">
+        ShopEase
+      </h1>
+      <p class="mt-2 text-sm text-slate-500">
+        Masuk untuk mulai berbelanja
+      </p>
+    </div>
+
+    <!-- Form -->
+    <form id="login-form" class="space-y-5">
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block mb-2 text-sm font-semibold text-slate-700">
+          Email
+        </label>
+
+        <input
+          id="email"
+          type="email"
+          placeholder="nama@gmail.com"
+          class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
+          required
+        >
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label for="password" class="block mb-2 text-sm font-semibold text-slate-700">
+          Password
+        </label>
+
+        <div class="relative">
+          <input
+            id="password"
+            type="password"
+            placeholder="Masukkan password"
+            class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-24 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
+            required
+          >
+
+          <button
+            id="toggle-password"
+            type="button"
+            class="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600 hover:bg-slate-200 transition"
+          >
+            Tampilkan
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember -->
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center gap-2 text-slate-600 cursor-pointer">
+          <input
+            type="checkbox"
+            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+          >
+          Ingat Saya
+        </label>
+
+        <a
+          href="#"
+          class="font-medium text-blue-600 hover:text-blue-700"
+        >
+          Lupa Password?
+        </a>
+      </div>
+
+      <!-- Error Message -->
+      <p
+        id="error-msg"
+        class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
+      ></p>
+
+      <!-- Login Button -->
+      <button
+        type="submit"
+        class="w-full rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-blue-700"
+      >
+        Masuk
+      </button>
+
+    </form>
+
+    <!-- Register -->
+    <p class="mt-6 text-center text-sm text-slate-500">
+      Belum punya akun?
+      <a
+        href="#"
+        class="font-semibold text-blue-600 hover:text-blue-700"
+      >
+        Daftar sekarang
+      </a>
+    </p>
+
+  </div>
+<script src="./js/Login.js">
+
+    
+</script>
+</body>
+</html>
