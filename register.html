@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login ShopEase</title>
+  <title>Register ShopEase</title>
   <link href="./src/output.css" rel="stylesheet">
 </head>
 
@@ -17,12 +17,12 @@
         ShopEase
       </h1>
       <p class="mt-2 text-sm text-slate-500">
-        Masuk untuk mulai berbelanja
+        Daftar untuk mulai berbelanja
       </p>
     </div>
 
     <!-- Form -->
-    <form id="login-form" class="space-y-5">
+    <form id="register-form" class="space-y-5">
 
       <!-- Email -->
       <div>
@@ -39,6 +39,34 @@
         >
       </div>
 
+      <!-- Nama -->
+      <div>
+        <label for="nama" class="block mb-2 text-sm font-semibold text-slate-700">
+          Nama
+        </label>
+        <input
+          id="nama"
+          type="text"
+          placeholder="Nama lengkap"
+          class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
+          required
+        >
+      </div>
+
+      <!-- Address -->
+      <div>
+        <label for="alamat" class="block mb-2 text-sm font-semibold text-slate-700">
+          Alamat
+        </label>
+        <input
+          id="alamat"
+          type="text"
+          placeholder="Alamat lengkap"
+          class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
+          required
+        >
+      </div>
+
       <!-- Password -->
       <div>
         <label for="password" class="block mb-2 text-sm font-semibold text-slate-700">
@@ -49,7 +77,7 @@
           <input
             id="password"
             type="password"
-            placeholder="Masukkan password"
+            placeholder="Buat password"
             class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-24 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
             required
           >
@@ -64,22 +92,18 @@
         </div>
       </div>
 
-      <!-- Remember -->
-      <div class="flex items-center justify-between text-sm">
-        <label class="flex items-center gap-2 text-slate-600 cursor-pointer">
-          <input
-            type="checkbox"
-            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-          >
-          Ingat Saya
+      <!-- Konfirmasi Password -->
+      <div>
+        <label for="confirm-password" class="block mb-2 text-sm font-semibold text-slate-700">
+          Konfirmasi Password
         </label>
-
-        <a
-          href="#"
-          class="font-medium text-blue-600 hover:text-blue-700"
+        <input
+          id="confirm-password"
+          type="password"
+          placeholder="Ulangi password"
+          class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-2 focus:ring-blue-100"
+          required
         >
-          Lupa Password?
-        </a>
       </div>
 
       <!-- Error Message -->
@@ -88,31 +112,30 @@
         class="hidden rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700"
       ></p>
 
-      <!-- Login Button -->
+      <!-- Register Button -->
       <button
         type="submit"
         class="w-full rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-blue-700"
       >
-        Masuk
+        Daftar
       </button>
 
     </form>
 
-    <!-- Register -->
+    <!-- Login -->
     <p class="mt-6 text-center text-sm text-slate-500">
-      Belum punya akun?
+      Sudah punya akun?
       <a
-        href="register.html"
+        href="login.html"
         class="font-semibold text-blue-600 hover:text-blue-700"
       >
-        Daftar sekarang
+        Masuk
       </a>
     </p>
 
   </div>
-<script src="./js/Login.js">
 
-    
-</script>
+  <script src="./js/Register.js"></script>
 </body>
 </html>
+

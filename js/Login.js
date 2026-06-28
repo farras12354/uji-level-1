@@ -1,30 +1,14 @@
 ﻿async function login() {
-    let email = document.getElementById("email").value.trim();
-    let password = document.getElementById("password").value.trim();
-    const errEl = document.getElementById("error-msg");
-
-    if (!email.endsWith("@gmail.com")) {
-        errEl.classList.remove("hidden");
-        errEl.textContent = "Gunakan email Gmail (@gmail.com).";
-        return;
-    }
-
-    if (password.length < 6) {
-        errEl.classList.remove("hidden");
-        errEl.textContent = "Password minimal 6 karakter.";
-        return;
-    }
-
-    const nama = email.split("@")[0];
-    sessionStorage.setItem("nama", nama);
-    sessionStorage.setItem("email", email);
-    window.location.href = "index.html";
+    // fungsi ini tidak dipakai langsung (submit handler di bawah yang aktif)
+    // dibiarkan untuk kompatibilitas
 }
+
 
 function logout() {
     sessionStorage.clear();
     window.location.href = "login.html";
 }
+
 
 function togglePassword() {
     const input = document.getElementById('password');
@@ -117,8 +101,40 @@ const loginForm = document.getElementById('login-form');
 
 
 
-      localStorage.setItem('user', JSON.stringify({ email, nama: email.split('@')[0] }));
+      // Verifikasi ke data register (bila ada)
+      const stored = localStorage.getItem('user');
 
-      window.location.href = 'index.html';
+
+      if (stored) {
+        try {
+          const user = JSON.parse(stored);
+          // console.log('DEBUG login', {email, password, storedUser: user});
+
+          if (user.email === email && String(user.password) === String(password)) {
+
+
+
+
+            // set session nama/email agar konsisten
+            sessionStorage.setItem('nama', user.nama);
+            sessionStorage.setItem('email', user.email);
+
+            // tidak perlu update localStorage.user; gunakan data register sebagai sumber kebenaran
+
+
+            window.location.href = 'index.html';
+            return;
+
+          }
+        } catch (e) {
+          // ignore
+        }
+      }
+
+      // fallback: bila tidak ada data password / tidak match, tampilkan error
+      showError('Email atau password salah.');
+      return;
+
 
     });
+
