@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "tailwindcss -i src/input.css -o src/output.css --watch"
+    "dev": "tailwindcss -i src/input.css -o src/output.css --watch",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -11,7 +12,14 @@
   "description": "",
   "dependencies": {
     "@tailwindcss/cli": "^4.3.0",
+    "bcrypt": "^6.0.0",
+    "body-parser": "^2.3.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "flowbite": "^4.0.2",
+    "lowdb": "^7.0.1",
     "tailwindcss": "^4.3.0"
   }
 }
